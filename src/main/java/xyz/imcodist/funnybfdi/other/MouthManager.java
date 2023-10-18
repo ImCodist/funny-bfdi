@@ -62,7 +62,7 @@ public class MouthManager {
 
         public void tick() {
             if (talking) {
-                talkTimer += 0.5;
+                talkTimer += 0.75;
 
                 if (talkTimer >= 1.0) {
                     if (talkCharacter >= talkText.length() - 1) {

@@ -43,15 +43,24 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         String mouth = "idle";
 
-        // has more then max hearts
-        if (mouthExpression.equals("normal")) {
-            for (StatusEffectInstance effectInstance : entity.getStatusEffects()) {
-                if (effectInstance.getEffectType().equals(StatusEffects.ABSORPTION)) {
-                    mouthExpression = "normal";
-                    mouth = "absorption";
-                    break;
-                }
+        // status effects
+        boolean hasAbsorb = false;
+        boolean hasPoison = false;
+        for (StatusEffectInstance effectInstance : entity.getStatusEffects()) {
+            if (effectInstance.getEffectType().equals(StatusEffects.ABSORPTION)) {
+                hasAbsorb = true;
+                continue;
             }
+
+            if (effectInstance.getEffectType().equals(StatusEffects.POISON)) {
+                hasPoison = true;
+            }
+        }
+
+        // absorption
+        if (mouthExpression.equals("normal") && hasAbsorb) {
+            mouthExpression = "normal";
+            mouth = "absorption";
         }
 
         // is at critical hearts (shaky health bar oooo)
@@ -63,7 +72,7 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         if (entity.isSubmergedInWater()) {
             mouth = "water";
         }
-        //
+
         // is talking
         if (mouthState != null && mouthState.talking) {
             String shape = mouthState.transitionMouthShape;
@@ -76,6 +85,11 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
                 }
             } else {
                 if (mouth.equals("water")) mouth = mouth + "talkclosed";
+            }
+        } else {
+            if (hasPoison) {
+                mouthExpression = "special";
+                mouth = "poison";
             }
         }
 

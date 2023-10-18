@@ -38,6 +38,7 @@ public class FunnyBFDIVoice implements VoicechatPlugin {
         if (volume < 100) return;
 
         String text = getMessage(volume);
+        // this is a terrible way to do this but its incredibly easy
         MouthManager.onPlayerChatted(Text.of(text), event.getId());
     }
 
@@ -48,6 +49,7 @@ public class FunnyBFDIVoice implements VoicechatPlugin {
         if (volume < 100) return;
 
         String text = getMessage(volume);
+        // this is a terrible way to do this but its incredibly easy
         MouthManager.onPlayerChatted(Text.of(text), MinecraftClient.getInstance().player.getUuid());
     }
 
