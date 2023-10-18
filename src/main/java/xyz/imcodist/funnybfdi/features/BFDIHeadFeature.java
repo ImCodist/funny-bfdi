@@ -66,7 +66,8 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
                 String character = String.valueOf(mouthState.talkText.charAt(mouthState.talkCharacter));
 
                 String num = switch (character.toLowerCase()) {
-                    case "a", "e", "i", "u" -> "3";
+                    case "a", "e", "u" -> "2";
+                    case "i" -> "3";
                     case "o", "r" -> "7";
                     case "m", "p", "b" -> "6";
                     case "f", "v" -> "5";
