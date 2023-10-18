@@ -4,7 +4,7 @@
 adds an animated bfdi mouth on all players and that is what it does<br>
 supports [simple voice chat](https://modrinth.com/plugin/simple-voice-chat) because of course it does
 
-![promo](https://github.com/ImCod2st/funny-bfdi/assets/121601871/a36afafb-6907-47b4-beac-95693479d3b7)
+![promo](https://github.com/ImCod2st/funny-bfdi/assets/121601871/d82915dc-9ce8-4d23-b12f-c6c737315744)
 
 ## download
 download the mod [here](https://github.com/ImCod2st/funny-bfdi/releases)<br>
