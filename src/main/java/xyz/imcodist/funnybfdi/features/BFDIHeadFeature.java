@@ -61,25 +61,14 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         }
 
         // is talking
-        if (mouthState != null) {
-            if (mouthState.talking) {
-                String character = String.valueOf(mouthState.talkText.charAt(mouthState.talkCharacter));
+        if (mouthState != null && mouthState.talking) {
+            String shape = mouthState.transitionMouthShape;
 
-                String num = switch (character.toLowerCase()) {
-                    case "a", "e", "u" -> "2";
-                    case "i" -> "3";
-                    case "o", "r" -> "7";
-                    case "m", "p", "b" -> "6";
-                    case "f", "v" -> "5";
-                    case "l" -> "4";
-                    case "t", "d", "k", "g", "n", "s", " " -> "0";
-                    default -> "1";
-                };
-
+            if (!shape.equals("0")) {
                 if (!mouth.equals("absorption") && !mouth.equals("critical")) {
-                    if (!num.equals("0")) mouth = "talk" + num;
+                    mouth = "talk" + shape;
                 } else {
-                    if (!num.equals("0")) mouth = mouth + "talk";
+                    mouth = mouth + "talk";
                 }
             }
         }

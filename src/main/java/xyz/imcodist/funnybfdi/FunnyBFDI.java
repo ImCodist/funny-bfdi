@@ -22,7 +22,7 @@ public class FunnyBFDI implements ModInitializer {
 			Text messageText = message;
 			if (signedMessage != null) messageText = signedMessage.getContent();
 
-			MouthManager.onPlayerChatted(messageText, sender.getId());
+			MouthManager.onPlayerChatted(Text.of(messageText.getString() + " "), sender.getId());
 		}));
 
 		ClientTickEvents.END_CLIENT_TICK.register((client -> MouthManager.tick()));

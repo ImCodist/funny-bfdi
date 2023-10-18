@@ -18,6 +18,7 @@ public class MouthManager {
 
         mouthState.talkCharacter = 0;
         mouthState.talkText = message.getString();
+        mouthState.updateMouthShape();
 
         mouthState.talking = true;
     }
@@ -25,6 +26,7 @@ public class MouthManager {
     public static MouthState getOrCreatePlayerMouthState(UUID playerUUID) {
         MouthState getState = getPlayerMouthState(playerUUID);
         if (getState != null) return getState;
+
 
         MouthState newPlayerState = new MouthState();
         newPlayerState.playerUUID = playerUUID;
@@ -53,11 +55,14 @@ public class MouthManager {
         public String talkText = "";
         public int talkCharacter = 0;
 
+        public String currentMouthShape = "0";
+        public String transitionMouthShape = currentMouthShape;
+
         private double talkTimer = 0.0;
 
         public void tick() {
             if (talking) {
-                talkTimer += 0.65;
+                talkTimer += 0.5;
 
                 if (talkTimer >= 1.0) {
                     if (talkCharacter >= talkText.length() - 1) {
@@ -68,11 +73,45 @@ public class MouthManager {
                     if (talkCharacter < talkText.length()) {
                         talkCharacter += 1;
                         if (talkCharacter >= talkText.length()) talkCharacter = talkText.length() - 1;
+
+                        updateMouthShape();
                     }
 
                     talkTimer -= 1.0;
                 }
+
+                if (currentMouthShape.equals("8")) {
+                    transitionMouthShape = switch (transitionMouthShape) {
+                        case "9" -> "7";
+                        case "7", "8" -> "8";
+                        default -> "9";
+                    };
+                } else {
+                    if (transitionMouthShape.equals("8") || transitionMouthShape.equals("7")) {
+                        transitionMouthShape = "9";
+                    } else if (transitionMouthShape.equals("3") && !currentMouthShape.equals("3")) {
+                        transitionMouthShape = "2";
+                    } else {
+                        transitionMouthShape = currentMouthShape;
+                    }
+                }
             }
+        }
+
+        public void updateMouthShape() {
+            String character = String.valueOf(talkText.charAt(talkCharacter));
+
+            transitionMouthShape = currentMouthShape;
+            currentMouthShape = switch (character.toLowerCase()) {
+                case "a", "e", "u" -> "2";
+                case "i" -> "3";
+                case "o", "r" -> "8";
+                case "m", "p", "b" -> "6";
+                case "f", "v" -> "5";
+                case "l" -> "4";
+                case "t", "d", "k", "g", "n", "s", " " -> "0";
+                default -> "1";
+            };
         }
     }
 }
