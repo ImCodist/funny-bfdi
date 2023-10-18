@@ -8,8 +8,10 @@
 		"codist"
 	],
 	"contact": {
+		"issues": "https://github.com/ImCod2st/funny-bfdi/issues",
 		"sources": "https://github.com/ImCod2st/funny-bfdi"
 	},
+	"license": "MIT License",
 	"icon": "assets/funnybfdi/icon.png",
 	"environment": "*",
 	"entrypoints": {
