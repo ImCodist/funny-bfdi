@@ -93,6 +93,7 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         RenderLayer renderLayer = RenderLayer.getEntityTranslucent(new Identifier("funnybfdi", "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
         VertexConsumer vertices = vertexConsumers.getBuffer(renderLayer);
 
+        // make changes to the matrix
         if (entity.isInSneakingPose()) {
             matrices.translate(0.0, 0.25, 0.0);
         }
@@ -102,6 +103,17 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(headYaw));
         matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(headPitch));
 
+        // render
         this.base.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV);
+
+        // revert all the changes i made to the matrix
+        matrices.multiply(RotationAxis.NEGATIVE_X.rotationDegrees(-headPitch));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-headYaw));
+
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-180.0F));
+
+        if (entity.isInSneakingPose()) {
+            matrices.translate(0.0, -0.25, 0.0);
+        }
     }
 }
