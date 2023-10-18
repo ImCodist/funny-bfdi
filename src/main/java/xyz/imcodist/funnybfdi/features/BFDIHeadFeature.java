@@ -25,7 +25,7 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
-        modelPartData.addChild("mouth", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -8.0F, 4.6F, 8.0F, 16.0F, 0.0F), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
+        modelPartData.addChild("mouth", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -8.0F, 4.75F, 8.0F, 16.0F, 0.0F), ModelTransform.pivot(0.0F, 0.0F, 0.0F));
         TexturedModelData texturedModelData = TexturedModelData.of(modelData, 16, 16);
 
         this.base = texturedModelData.createModel().getChild("mouth");
@@ -92,6 +92,10 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         RenderLayer renderLayer = RenderLayer.getEntityTranslucent(new Identifier("funnybfdi", "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
         VertexConsumer vertices = vertexConsumers.getBuffer(renderLayer);
+
+        if (entity.isInSneakingPose()) {
+            matrices.translate(0.0, 0.25, 0.0);
+        }
 
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
 
