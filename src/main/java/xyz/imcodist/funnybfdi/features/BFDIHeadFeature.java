@@ -96,7 +96,7 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         ModelPart head = getContextModel().getHead();
 
         // make changes to the matrix
-        matrices.translate(head.pivotX / 16.0, head.pivotY / 16.0, head.pivotZ / 16.0);
+        matrices.translate(head.pivotX / 8.0, head.pivotY / 16.0, head.pivotZ / 8.0);
 
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0F));
 
@@ -114,6 +114,6 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-180.0F));
 
-        matrices.translate(-head.pivotX / 16.0, -head.pivotY / 16.0, -head.pivotZ / 16.0);
+        matrices.translate(-head.pivotX / 8.0, -head.pivotY / 16.0, -head.pivotZ / 8.0);
     }
 }
