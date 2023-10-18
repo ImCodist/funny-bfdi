@@ -11,6 +11,7 @@ public class MouthManager {
 
     public static void tick() {
         playerMouths.forEach(MouthState::tick);
+        playerMouths.removeIf(mouthState -> mouthState.queueForDeletion);
     }
 
     public static void onPlayerChatted(Text message, GameProfile sender) {
@@ -48,6 +49,8 @@ public class MouthManager {
     public static class MouthState {
         public UUID playerUUID;
 
+        public boolean queueForDeletion = false;
+
         public boolean talking = false;
 
         public String talkText = "";
@@ -62,6 +65,7 @@ public class MouthManager {
                 if (talkTimer >= 1.0) {
                     if (talkCharacter >= talkText.length() - 1) {
                         talking = false;
+                        queueForDeletion = true;
                     }
 
                     if (talkCharacter < talkText.length()) {
