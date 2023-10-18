@@ -3,7 +3,7 @@
 	"id": "funnybfdi",
 	"version": "${version}",
 	"name": "Funny BFDI",
-	"description": "adds a bfdi mouth all players and that is what it does",
+	"description": "adds a bfdi mouth all players and that is what it does\nsupports simple voice chat because of course it does",
 	"authors": [
 		"codist"
 	],
@@ -15,6 +15,9 @@
 	"entrypoints": {
 		"main": [
 			"xyz.imcodist.funnybfdi.FunnyBFDI"
+		],
+		"voicechat": [
+			"xyz.imcodist.funnybfdi.voice.FunnyBFDIVoice"
 		]
 	},
 	"mixins": [
@@ -27,6 +30,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"voicechat": ">=1.20.2-2.4.11"
 	}
 }

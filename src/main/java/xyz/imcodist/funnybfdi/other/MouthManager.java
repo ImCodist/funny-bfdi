@@ -1,6 +1,5 @@
 package xyz.imcodist.funnybfdi.other;
 
-import com.mojang.authlib.GameProfile;
 import net.minecraft.text.Text;
 
 import java.util.ArrayList;
@@ -14,13 +13,11 @@ public class MouthManager {
         playerMouths.removeIf(mouthState -> mouthState.queueForDeletion);
     }
 
-    public static void onPlayerChatted(Text message, GameProfile sender) {
-        MouthState mouthState = getOrCreatePlayerMouthState(sender.getId());
+    public static void onPlayerChatted(Text message, UUID senderUUID) {
+        MouthState mouthState = getOrCreatePlayerMouthState(senderUUID);
 
         mouthState.talkCharacter = 0;
         mouthState.talkText = message.getString();
-
-        System.out.println(mouthState.talkText);
 
         mouthState.talking = true;
     }
