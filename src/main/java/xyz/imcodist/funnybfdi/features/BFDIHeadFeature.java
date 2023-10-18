@@ -60,16 +60,22 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
             mouth = "critical";
         }
 
+        if (entity.isSubmergedInWater()) {
+            mouth = "water";
+        }
+        //
         // is talking
         if (mouthState != null && mouthState.talking) {
             String shape = mouthState.transitionMouthShape;
 
             if (!shape.equals("0")) {
-                if (!mouth.equals("absorption") && !mouth.equals("critical")) {
+                if (!mouth.equals("absorption") && !mouth.equals("critical") && !mouth.equals("water")) {
                     mouth = "talk" + shape;
                 } else {
                     mouth = mouth + "talk";
                 }
+            } else {
+                if (mouth.equals("water")) mouth = mouth + "talkclosed";
             }
         }
 
