@@ -13,7 +13,7 @@ requires [fabric api](https://modrinth.com/mod/fabric-api) to work
 <sub>[simple voice chat](https://modrinth.com/plugin/simple-voice-chat) is not required, and the mod will work without it</sub>
 
 ## features
-- Adds a cartoony and expressive mouth to you and your friends avatars.
+- Adds an cartoony and expressive mouth to you and your friends avatars.
 - Reacts to player state. (low health = sad mouth, high health = happy mouth) Wow!
 - Animates when a player types in chat. (Lip sync is to the best of my ability)
 - Animates when players are using voice chat with [Simple Voice Chat](https://modrinth.com/plugin/simple-voice-chat).
