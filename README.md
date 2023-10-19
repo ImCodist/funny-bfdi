@@ -2,7 +2,7 @@
 > "i got bored one day and this is the result of that day"
 
 adds an animated bfdi mouth on all players and that is what it does<br>
-supports [simple voice chat](https://modrinth.com/plugin/simple-voice-chat) because of course it does
+supports [simple voice chat](https://modrinth.com/plugin/simple-voice-chat) ([example video](https://www.youtube.com/watch?v=OoOqC5D9i8I))
 
 ![promo](https://github.com/ImCod2st/funny-bfdi/assets/121601871/d82915dc-9ce8-4d23-b12f-c6c737315744)
 
