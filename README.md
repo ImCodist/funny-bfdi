@@ -7,8 +7,10 @@ supports [simple voice chat](https://modrinth.com/plugin/simple-voice-chat) beca
 ![promo](https://github.com/ImCod2st/funny-bfdi/assets/121601871/d82915dc-9ce8-4d23-b12f-c6c737315744)
 
 ## download
-download the mod [here](https://github.com/ImCodist/funny-bfdi/releases)<br>
-requires [fabric api](https://modrinth.com/mod/fabric-api) to work
+download the mod [here](https://github.com/ImCodist/funny-bfdi/releases)
+
+requires [fabric api](https://modrinth.com/mod/fabric-api) to work<br>
+i suggest getting [mod menu](https://modrinth.com/mod/mod-menu) to access config
 
 <sub>[simple voice chat](https://modrinth.com/plugin/simple-voice-chat) is not required, and the mod will work without it</sub>
 
