@@ -9,11 +9,21 @@ public class MouthManager {
     private static final ArrayList<MouthState> playerMouths = new ArrayList<>();
 
     public static void tick() {
+        if (!Config.enabled) {
+            if (playerMouths.size() > 0) {
+                playerMouths.clear();
+            }
+
+            return;
+        }
+
         playerMouths.forEach(MouthState::tick);
         playerMouths.removeIf(mouthState -> mouthState.queueForDeletion);
     }
 
     public static void onPlayerChatted(Text message, UUID senderUUID) {
+        if (!Config.enabled) return;
+
         MouthState mouthState = getOrCreatePlayerMouthState(senderUUID);
 
         mouthState.talkCharacter = 0;
@@ -62,7 +72,7 @@ public class MouthManager {
 
         public void tick() {
             if (talking) {
-                talkTimer += 0.75;
+                talkTimer += 0.75 * Config.mouthSpeed;
 
                 if (talkTimer >= 1.0) {
                     if (talkCharacter >= talkText.length() - 1) {
@@ -80,20 +90,24 @@ public class MouthManager {
                     talkTimer -= 1.0;
                 }
 
-                if (currentMouthShape.equals("8")) {
-                    transitionMouthShape = switch (transitionMouthShape) {
-                        case "9" -> "7";
-                        case "7", "8" -> "8";
-                        default -> "9";
-                    };
-                } else {
-                    if (transitionMouthShape.equals("8") || transitionMouthShape.equals("7")) {
-                        transitionMouthShape = "9";
-                    } else if (transitionMouthShape.equals("3") && !currentMouthShape.equals("3")) {
-                        transitionMouthShape = "2";
+                if (Config.mouthTransitions) {
+                    if (currentMouthShape.equals("8")) {
+                        transitionMouthShape = switch (transitionMouthShape) {
+                            case "9" -> "7";
+                            case "7", "8" -> "8";
+                            default -> "9";
+                        };
                     } else {
-                        transitionMouthShape = currentMouthShape;
+                        if (transitionMouthShape.equals("8") || transitionMouthShape.equals("7")) {
+                            transitionMouthShape = "9";
+                        } else if (transitionMouthShape.equals("3") && !currentMouthShape.equals("3")) {
+                            transitionMouthShape = "2";
+                        } else {
+                            transitionMouthShape = currentMouthShape;
+                        }
                     }
+                } else {
+                    transitionMouthShape = currentMouthShape;
                 }
             }
         }

@@ -15,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
+import xyz.imcodist.funnybfdi.other.Config;
 import xyz.imcodist.funnybfdi.other.MouthManager;
 
 public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & ModelWithHead> extends FeatureRenderer<T, M> {
@@ -33,6 +34,8 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
     @Override
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
+        if (!Config.enabled) return;
+
         MouthManager.MouthState mouthState = MouthManager.getPlayerMouthState(entity.getUuid());
 
         String mouthExpression = "normal";
@@ -104,6 +107,8 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         ModelPart head = getContextModel().getHead();
 
+        float offsetScale = 250.0f;
+
         // make changes to the matrix
         matrices.translate(head.pivotX / 8.0, head.pivotY / 16.0, head.pivotZ / 8.0);
 
@@ -113,10 +118,16 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         matrices.multiply(RotationAxis.NEGATIVE_X.rotation(head.pitch));
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotation(head.roll));
 
+        matrices.translate(Config.mouthOffsetX / -offsetScale, Config.mouthOffsetY / offsetScale, Config.mouthOffsetZ / offsetScale);
+        matrices.scale(Config.mouthSize, Config.mouthSize, 1.0f);
+
         // render
         this.base.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV);
 
         // revert all the changes i made to the matrix
+        matrices.scale(-Config.mouthSize, -Config.mouthSize, 1.0f);
+        matrices.translate(-Config.mouthOffsetX / -offsetScale, -Config.mouthOffsetY / offsetScale, -Config.mouthOffsetZ / offsetScale);
+
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotation(-head.roll));
         matrices.multiply(RotationAxis.NEGATIVE_X.rotation(-head.pitch));
         matrices.multiply(RotationAxis.POSITIVE_Y.rotation(-head.yaw));

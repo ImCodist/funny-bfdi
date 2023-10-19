@@ -1,0 +1,14 @@
+{
+  "funnybfdi.midnightconfig.title": "Funny BFDI Config",
+  "funnybfdi.midnightconfig.enabled": "Enabled",
+
+  "funnybfdi.midnightconfig.mouthCategory": "Mouth Config",
+  "funnybfdi.midnightconfig.mouthSpeed": "Mouth Speed",
+  "funnybfdi.midnightconfig.mouthTransitions": "Mouth Transitions",
+
+  "funnybfdi.midnightconfig.mouthTransformCategory": "Mouth Transform",
+  "funnybfdi.midnightconfig.mouthSize": "Mouth Scale",
+  "funnybfdi.midnightconfig.mouthOffsetX": "Mouth Offset X",
+  "funnybfdi.midnightconfig.mouthOffsetY": "Mouth Offset Y",
+  "funnybfdi.midnightconfig.mouthOffsetZ": "Mouth Offset Z"
+}

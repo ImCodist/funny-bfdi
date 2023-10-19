@@ -17,6 +17,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven { url = 'https://maven.maxhenkel.de/repository/public' }
+	maven { url = "https://api.modrinth.com/maven" }
 }
 
 dependencies {
@@ -29,6 +30,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	implementation "de.maxhenkel.voicechat:voicechat-api:${voicechat_api_version}"
+
+	modImplementation include("maven.modrinth:midnightlib:${midnightlib_version}")
 	
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
