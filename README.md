@@ -1,3 +1,6 @@
+![FUNNY BFDI BANNER](https://github.com/ImCodist/funny-bfdi/assets/50346006/7f328b3d-5467-4adb-a208-d2474ca0f7bf)
+![Version](https://img.shields.io/github/v/release/ImCodist/funny-bfdi?style=flat-square) ![Downloads](https://img.shields.io/github/downloads/ImCodist/funny-bfdi/total?style=flat-square) [![wakatime](https://wakatime.com/badge/user/66a17a4d-fd33-4271-9faf-2a533d3d618e/project/018b3bfd-ece9-42cf-8880-73dfc9f69114.svg?style=flat-square)](https://wakatime.com/badge/user/66a17a4d-fd33-4271-9faf-2a533d3d618e/project/018b3bfd-ece9-42cf-8880-73dfc9f69114?style=flat-square) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/imcodist/funny-bfdi/build.yml?style=flat-square) ![License](https://img.shields.io/github/license/ImCodist/funny-bfdi?style=flat-square)
+
 # funny-bfdi
 > "i got bored one day and this is the result of that day"
 
