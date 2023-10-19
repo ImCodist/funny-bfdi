@@ -15,7 +15,7 @@
 	"icon": "assets/funnybfdi/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
+		"client": [
 			"xyz.imcodist.funnybfdi.FunnyBFDI"
 		],
 		"voicechat": [
