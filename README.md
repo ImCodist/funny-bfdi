@@ -10,7 +10,7 @@ supports [simple voice chat](https://modrinth.com/plugin/simple-voice-chat) beca
 download the mod [here](https://github.com/ImCodist/funny-bfdi/releases)
 
 requires [fabric api](https://modrinth.com/mod/fabric-api) to work<br>
-i suggest getting [mod menu](https://modrinth.com/mod/mod-menu) to access config
+i suggest getting [mod menu](https://modrinth.com/mod/modmenu) to access config
 
 <sub>[simple voice chat](https://modrinth.com/plugin/simple-voice-chat) is not required, and the mod will work without it</sub>
 
