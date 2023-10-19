@@ -29,7 +29,7 @@ public class FunnyBFDIVoice implements VoicechatPlugin {
 
     @Override
     public String getPluginId() {
-        return "funnybfdi";
+        return FunnyBFDI.MOD_ID;
     }
 
 

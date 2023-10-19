@@ -15,8 +15,11 @@
 	"icon": "assets/funnybfdi/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"client": [
+		"main": [
 			"xyz.imcodist.funnybfdi.FunnyBFDI"
+		],
+		"client": [
+			"xyz.imcodist.funnybfdi.client.FunnyBFDIClient"
 		],
 		"voicechat": [
 			"xyz.imcodist.funnybfdi.voice.FunnyBFDIVoice"

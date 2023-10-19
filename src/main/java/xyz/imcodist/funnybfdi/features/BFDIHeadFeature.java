@@ -15,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
+import xyz.imcodist.funnybfdi.FunnyBFDI;
 import xyz.imcodist.funnybfdi.other.Config;
 import xyz.imcodist.funnybfdi.other.MouthManager;
 
@@ -102,12 +103,18 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
             mouth = "hurt";
         }
 
-        RenderLayer renderLayer = RenderLayer.getEntityTranslucent(new Identifier("funnybfdi", "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
+        RenderLayer renderLayer = RenderLayer.getEntityTranslucent(new Identifier(FunnyBFDI.MOD_ID, "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
         VertexConsumer vertices = vertexConsumers.getBuffer(renderLayer);
 
         ModelPart head = getContextModel().getHead();
 
         float offsetScale = 250.0f;
+        float mouthSize = Config.mouthSize;
+
+        if (mouthSize <= 0.0f) {
+            mouthSize = 0.5f;
+            this.base.visible = false;
+        } else this.base.visible = true;
 
         // make changes to the matrix
         matrices.translate(head.pivotX / 8.0, head.pivotY / 16.0, head.pivotZ / 8.0);
@@ -119,14 +126,14 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotation(head.roll));
 
         matrices.translate(Config.mouthOffsetX / -offsetScale, Config.mouthOffsetY / offsetScale, Config.mouthOffsetZ / offsetScale);
-        matrices.scale(Config.mouthSize, Config.mouthSize, 1.0f);
+        matrices.scale(mouthSize, mouthSize, 1.0f);
 
         // render
         this.base.render(matrices, vertices, light, OverlayTexture.DEFAULT_UV);
 
         // revert all the changes i made to the matrix
-        matrices.scale(-Config.mouthSize, -Config.mouthSize, 1.0f);
-        matrices.translate(-Config.mouthOffsetX / -offsetScale, -Config.mouthOffsetY / offsetScale, -Config.mouthOffsetZ / offsetScale);
+        matrices.scale(1.0f / mouthSize, 1.0f / mouthSize, 1.0f);
+        matrices.translate((Config.mouthOffsetX / -offsetScale) * -1.0f, (Config.mouthOffsetY / offsetScale) * -1.0f, (Config.mouthOffsetZ / offsetScale) * -1.0f);
 
         matrices.multiply(RotationAxis.NEGATIVE_Z.rotation(-head.roll));
         matrices.multiply(RotationAxis.NEGATIVE_X.rotation(-head.pitch));
@@ -134,6 +141,6 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-180.0F));
 
-        matrices.translate(-head.pivotX / 8.0, -head.pivotY / 16.0, -head.pivotZ / 8.0);
+        matrices.translate((head.pivotX / 8.0) * -1.0f, (head.pivotY / 16.0) * -1.0f, (head.pivotZ / 8.0) * -1.0f);
     }
 }
