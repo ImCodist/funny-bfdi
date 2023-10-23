@@ -38,6 +38,10 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
         if (!Config.enabled) return;
         if (Config.mouthSize <= 0.0f) return;
 
+        ModelPart head = getContextModel().getHead();
+        if (entity.isInvisible()) return;
+        if (!head.visible) return;
+
         MouthManager.MouthState mouthState = MouthManager.getPlayerMouthState(entity.getUuid());
 
         String mouthExpression = "normal";
@@ -106,8 +110,6 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
 
         RenderLayer renderLayer = RenderLayer.getEntityTranslucent(new Identifier(FunnyBFDI.MOD_ID, "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
         VertexConsumer vertices = vertexConsumers.getBuffer(renderLayer);
-
-        ModelPart head = getContextModel().getHead();
 
         float offsetScale = 250.0f;
 
