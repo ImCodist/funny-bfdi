@@ -2,7 +2,7 @@
 	"required": true,
 	"package": "xyz.imcodist.funnybfdi.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [
+	"client": [
 		"PlayerEntityRendererMixin"
 	],
 	"injectors": {
