@@ -7,6 +7,8 @@
 adds an animated bfdi mouth on all players and that is what it does<br>
 supports [simple voice chat](https://modrinth.com/plugin/simple-voice-chat) ([example video](https://www.youtube.com/watch?v=OoOqC5D9i8I))
 
+credit to [jacknjellify](https://www.youtube.com/@BFDI) for creating the mouth assets
+
 ![promo](https://github.com/ImCod2st/funny-bfdi/assets/121601871/d82915dc-9ce8-4d23-b12f-c6c737315744)
 
 ## download
