@@ -108,7 +108,7 @@ public class BFDIHeadFeature<T extends LivingEntity, M extends EntityModel<T> & 
             mouth = "hurt";
         }
 
-        RenderLayer renderLayer = RenderLayer.getEntityTranslucent(new Identifier(FunnyBFDI.MOD_ID, "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
+        RenderLayer renderLayer = RenderLayer.getEntityTranslucent(Identifier.of(FunnyBFDI.MOD_ID, "textures/mouths/" + mouthExpression + "/" + mouth + ".png"));
         VertexConsumer vertices = vertexConsumers.getBuffer(renderLayer);
 
         float offsetScale = 250.0f;
